@@ -1,0 +1,26 @@
+{
+  "name": "json-filter",
+  "version": "0.0.1",
+  "description": "A pakcage to filter a json object depending on an array of operations given",
+  "main": "json-filter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appscode/json-filter.git"
+  },
+  "keywords": [
+    "json",
+    "filter",
+    "javascript",
+    "json-filter",
+    "jq-web"
+  ],
+  "author": "Appscode Front-end team",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/appscode/json-filter/issues"
+  },
+  "homepage": "https://github.com/appscode/json-filter#readme"
+}
