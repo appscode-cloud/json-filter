@@ -29,7 +29,10 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "@babel/core": "^7.10.4",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^13.0.1",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "rollup-plugin-terser": "^6.1.0"
   }
 }

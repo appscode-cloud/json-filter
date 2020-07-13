@@ -1,15 +1,19 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import babel from "@rollup/plugin-babel";
+import commonjs from "@rollup/plugin-commonjs";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import { terser } from "rollup-plugin-terser";
 
 export default {
-  input: 'json-filter.js',
+  input: "json-filter.js",
   output: {
-    file: 'dist/json-filter.min.js',
-    format: 'umd',
-    name: 'JsonFilter'
+    file: "dist/json-filter.min.js",
+    format: "umd",
+    name: "JsonFilter",
   },
   plugins: [
-    resolve(),
-    commonjs()
-  ]
+    babel({ babelHelpers: "bundled" }),
+    commonjs(),
+    nodeResolve(),
+    terser(),
+  ],
 };
