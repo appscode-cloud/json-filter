@@ -1,4 +1,4 @@
-const JsonFilter = require("./dist/bundle");
+const JsonFilter = require("./dist/json-filter.min.js");
 
 const testOb = {
   type: "multi-step-form",
@@ -146,4 +146,4 @@ const operations = [
   { text: { $ref: "#/label" }, value: { $ref: "#/type" } },
 ];
 
-console.log(JsonFilter(testOb, operations));
+console.log(JsonFilter(testOb, operations1));

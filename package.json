@@ -1,6 +1,6 @@
 {
-  "name": "json-filter",
-  "version": "0.0.1",
+  "name": "@appscode/json-filter",
+  "version": "0.0.2",
   "description": "A pakcage to filter a json object depending on an array of operations given",
   "main": "json-filter.js",
   "scripts": {
@@ -25,14 +25,14 @@
   },
   "homepage": "https://github.com/appscode/json-filter#readme",
   "dependencies": {
-    "json-ptr": "^1.3.1",
-    "tslib": "^2.0.0"
+    "json-ptr": "^1.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-commonjs": "^13.0.1",
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "rollup-plugin-terser": "^6.1.0"
+    "rollup-plugin-terser": "^6.1.0",
+    "tslib": "^2.0.0"
   }
 }
