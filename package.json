@@ -2,7 +2,7 @@
   "name": "@appscode/json-filter",
   "version": "0.0.4",
   "description": "A pakcage to filter a json object depending on an array of operations given",
-  "main": "json-filter.js",
+  "main": "dist/json-filter.min.js",
   "scripts": {
     "test": "rollup --config rollup.config.js && node test.js",
     "build": "rollup --config rollup.config.js"
