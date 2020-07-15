@@ -32,7 +32,16 @@ function performOp(ob, op) {
       Object.keys(op).forEach((key) => {
         const $ref = op[key].$ref || {};
         const path = $ref.split("#")[1] || "/";
-        newOb[key] = ptr.JsonPointer.get(ob, path);
+
+        // calculate actual prop
+        let prop = "";
+        if (key.charAt(0) === '#') {
+          // if key starts with #, then it's a relative path to the field containing the actual key
+          prop = ptr.JsonPointer.get(ob, key);
+        } else prop = key;
+
+        // assign new prop value
+        newOb[prop] = ptr.JsonPointer.get(ob, path);
       });
       return newOb;
     }

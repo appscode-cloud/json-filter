@@ -31,26 +31,26 @@ In order to filter out relvent fields from the javascript object, you need to pr
 
 There are two types of operation:
 
-  1) **Fetch:** This operations fetches the value at a given path inside the object.
+1. **Fetch:** This operations fetches the value at a given path inside the object.
 
-      ```json
-      {
-        "$ref": "#/demo/path"
-      }
-      ```
+   ```json
+   {
+     "$ref": "#/demo/path"
+   }
+   ```
 
-  2) **Fetch & Map:** This operation fetches relevant values and maps them into a new object
+2. **Fetch & Map:** This operation fetches relevant values and maps them into a new object
 
-      ```json
-      {
-        "prop1": {
-          "$ref": "#/demo/path/to/prop1"
-        },
-        "prop2": {
-          "$ref": "#/demo/path/to/prop2"
-        }
-      }
-      ```
+   ```json
+   {
+     "prop1": {
+       "$ref": "#/demo/path/to/prop1"
+     },
+     "prop2": {
+       "$ref": "#/demo/path/to/prop2"
+     }
+   }
+   ```
 
 ## Examples
 
@@ -64,15 +64,15 @@ const jsonOb = {
     {
       companyName: "Appscode",
       desgnation: "Front-end Software Engineer",
-      duration: 2
+      duration: 2,
     },
     {
       companyName: "Google",
       desgnation: "Software Engineer",
-      duration: 1
-    }
-  ]
-}
+      duration: 1,
+    },
+  ],
+};
 ```
 
 Now, let's fetch the array of previous jobs
@@ -80,8 +80,8 @@ Now, let's fetch the array of previous jobs
 ```javascript
 const operations = [
   {
-    $ref: "#/previousJobs"
-  }
+    $ref: "#/previousJobs",
+  },
 ];
 const previousJobs = JsonFilter(jsonOb, operations);
 console.log(previousJobs);
@@ -107,11 +107,11 @@ Let's say, we dont need the whole company object in our previous jobs array. We 
 ```javascript
 const operations = [
   {
-    $ref: "#/previousJobs"
+    $ref: "#/previousJobs",
   },
   {
-    $ref: "#/companyName"
-  }
+    $ref: "#/companyName",
+  },
 ];
 const previousJobs = JsonFilter(jsonOb, operations);
 console.log(previousJobs);
@@ -129,16 +129,16 @@ Now, if we only want specific properties of the company object, then we would ha
 ```javascript
 const operations = [
   {
-    $ref: "#/previousJobs"
+    $ref: "#/previousJobs",
   },
   {
     companyName: {
-      $ref: "#/companyName"
+      $ref: "#/companyName",
     },
     designation: {
-      $ref: "#/designation"
-    }
-  }
+      $ref: "#/designation",
+    },
+  },
 ];
 const previousJobs = JsonFilter(jsonOb, operations);
 console.log(previousJobs);
@@ -162,16 +162,16 @@ We can also rename these properties to our desired names. eg:
 ```javascript
 const operations = [
   {
-    $ref: "#/previousJobs"
+    $ref: "#/previousJobs",
   },
   {
     name: {
-      $ref: "#/companyName"
+      $ref: "#/companyName",
     },
     position: {
-      $ref: "#/designation"
-    }
-  }
+      $ref: "#/designation",
+    },
+  },
 ];
 const previousJobs = JsonFilter(jsonOb, operations);
 console.log(previousJobs);
@@ -185,6 +185,39 @@ console.log(previousJobs);
   {
     name: "Google",
     position: "Software Engineer",
+  }
+]
+*/
+```
+
+If we want, we can name these properties according to values inside the obects. We have to put the relative paths to the values we want as property names. **If property name starts with `#`, it is considered to be a relative path to the actual value.** Eg: -
+
+```javascript
+const operations = [
+  {
+    $ref: "#/previousJobs",
+  },
+  {
+    name: {
+      $ref: "#/companyName",
+    },
+    "#/companyName": {
+      $ref: "#/designation",
+    },
+  },
+];
+const previousJobs = JsonFilter(jsonOb, operations);
+console.log(previousJobs);
+
+/* output
+[
+  {
+    name: "Appscode",
+    Appscode: "Front-end Software Engineer",
+  },
+  {
+    name: "Google",
+    Google: "Software Engineer",
   }
 ]
 */

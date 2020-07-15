@@ -138,7 +138,7 @@ const operations1 = [
 const operations2 = [
   { $ref: "#/steps/0/form" },
   { $ref: "#/elements" },
-  { text: { $ref: "#/type" }, value: { $ref: "#/schema/$ref" } },
+  { text: { $ref: "#/type" }, "#/type": { $ref: "#/schema/$ref" } },
 ];
 
 const operations = [
@@ -146,4 +146,4 @@ const operations = [
   { text: { $ref: "#/label" }, value: { $ref: "#/type" } },
 ];
 
-console.log(JsonFilter(testOb, operations1));
+console.log(JsonFilter(testOb, operations2));
