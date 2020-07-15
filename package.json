@@ -1,6 +1,6 @@
 {
   "name": "@appscode/json-filter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A pakcage to filter a json object depending on an array of operations given",
   "main": "dist/json-filter.min.js",
   "scripts": {
