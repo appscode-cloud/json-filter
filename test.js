@@ -143,7 +143,7 @@ const operations2 = [
 
 const operations = [
   { $ref: "#/steps/0/form/elements/0" },
-  { text: { $ref: "#/label" }, value: { $ref: "#/type" } },
+  { text: { $ref: "#/label" }, value: { $ref: "#/" } },
 ];
 
-console.log(JsonFilter(testOb, operations2));
+console.log(JsonFilter(testOb, operations));

@@ -17,12 +17,11 @@ function performOp(ob, op) {
   const { $ref } = op;
   if ($ref) {
     // existance of $ref implies that we have to return the value in that path directly
-    const path = $ref.split("#")[1] || "/";
     // perform different operations depending on ob being array or object
     return arrayOrObject(
       ob,
-      (el) => ptr.JsonPointer.get(el, path),
-      () => ptr.JsonPointer.get(ob, path)
+      (el) => $ref === '#/' ? el : ptr.JsonPointer.get(el, $ref),
+      () => $ref === '#/' ? ob : ptr.JsonPointer.get(ob, $ref)
     );
   } else {
     // have to return object
@@ -31,17 +30,16 @@ function performOp(ob, op) {
       const newOb = {};
       Object.keys(op).forEach((key) => {
         const $ref = op[key].$ref || {};
-        const path = $ref.split("#")[1] || "/";
 
         // calculate actual prop
         let prop = "";
-        if (key.charAt(0) === '#') {
+        if (key.charAt(0) === "#") {
           // if key starts with #, then it's a relative path to the field containing the actual key
-          prop = ptr.JsonPointer.get(ob, key);
+          prop = key === "#/" ? ob : ptr.JsonPointer.get(ob, key);
         } else prop = key;
 
         // assign new prop value
-        newOb[prop] = ptr.JsonPointer.get(ob, path);
+        newOb[prop] = $ref === "#/" ? ob : ptr.JsonPointer.get(ob, $ref);
       });
       return newOb;
     }
