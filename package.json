@@ -24,6 +24,9 @@
     "url": "https://github.com/appscode/json-filter/issues"
   },
   "homepage": "https://github.com/appscode/json-filter#readme",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "dependencies": {
     "json-ptr": "^3.1.1"
   },
