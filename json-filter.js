@@ -1,4 +1,4 @@
-import ptr from "json-ptr";
+import * as ptr from "json-ptr";
 
 function arrayOrObject(ob, arrayFunc, obFunc) {
   if (Array.isArray(ob)) {
